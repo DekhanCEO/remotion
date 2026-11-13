@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lueur — film 3D piloté par le numéro d'image</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #05070f; color: #fff4d6; font-family: system-ui, sans-serif; }
+      #cadre { display: flex; flex-direction: column; height: 100%; }
+      #zone { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+      /* Le canvas garde sa résolution interne ; le CSS ne fait que l'ajuster à la fenêtre. */
+      #rendu { max-width: 100%; max-height: 100%; aspect-ratio: 16 / 9; background: #000; }
+      #barre { display: flex; gap: 10px; align-items: center; padding: 8px 12px; background: #0b1026; flex-wrap: wrap; }
+      #barre button { background: #1b1f4b; color: #fff4d6; border: 1px solid #4f7c82; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+      #barre button:disabled { opacity: 0.4; cursor: default; }
+      #curseur { flex: 1; min-width: 160px; accent-color: #ffb347; }
+      #info { font-variant-numeric: tabular-nums; font-size: 13px; min-width: 330px; }
+    </style>
+  </head>
+  <body>
+    <div id="cadre">
+      <div id="zone"><canvas id="rendu"></canvas></div>
+      <div id="barre">
+        <button id="lecture">▶ Lecture</button>
+        <input id="curseur" type="range" min="0" max="1799" value="0" step="1" />
+        <span id="info"></span>
+        <button id="mp4">⬤ Capturer en MP4</button>
+        <button id="png">Capturer en PNG (secours)</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
